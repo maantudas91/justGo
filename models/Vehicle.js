@@ -1,0 +1,17 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const timestamps = require('mongoose-timestamp');
+
+
+
+// brand Schema
+const vehicleSchema = mongoose.Schema({
+    name : String,
+    vehicle_type : String,
+    reg_no : String,
+    status: { type: String, enum : ['active','inactive'], default: 'active' },
+},{ collection: 'vehicles' });
+
+vehicleSchema.plugin(timestamps);
+
+const Vehicle = module.exports = mongoose.model('Vehicle', vehicleSchema);
