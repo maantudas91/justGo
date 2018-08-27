@@ -19,7 +19,7 @@ const Address = new Schema({
 const buSchema = mongoose.Schema({
 	address : Address,
     loc: {
-        type: { type: String },
+        type: { type: String , default: 'Point'},
         coordinates: [Number],
     },
     status: { type: String, enum : ['active','inactive'], default: 'active' },
@@ -27,5 +27,6 @@ const buSchema = mongoose.Schema({
 },{ collection: 'bu' });
 
 buSchema.plugin(timestamps);
+buSchema.index({ "loc": "2dsphere" });
 
 const BU = module.exports = mongoose.model('BU', buSchema);
