@@ -23,11 +23,14 @@ router.get('/get/user', userController.getUser);
 /* BU */
 router.get('/list/bu', buController.getBUs);
 router.post('/add/bu', buController.addBU);
+router.post('/edit/bu/:buid', buController.editBU);
+
+
 
 /* Vehicle */
 router.get('/list/vehicle', vehicleController.getVehicles);
 router.post('/add/vehicle', vehicleController.addVehicle);
-
+router.get('/list/vehicle/:buid', vehicleController.listVehiclebyBU);
 
 /* Order */
 router.get('/list/order', orderController.getOrders);
