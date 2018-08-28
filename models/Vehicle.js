@@ -8,7 +8,7 @@ const timestamps = require('mongoose-timestamp');
 const vehicleSchema = mongoose.Schema({
     name : { type: String, required : [ true, 'Vehicle name is required']},
     vehicle_type : String,
-    reg_no : String,
+    reg_no : { type: String, unique : true },
     status: { type: String, enum : ['active','inactive'], default: 'active' },
 },{ collection: 'vehicles' });
 
