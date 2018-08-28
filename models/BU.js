@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const timestamps = require('mongoose-timestamp');
+const Vehicle = require('./Vehicle');
 
 const Address = new Schema({
     address1 : String,
@@ -23,7 +24,8 @@ const buSchema = mongoose.Schema({
         coordinates: [Number],
     },
     status: { type: String, enum : ['active','inactive'], default: 'active' },
-    description : String
+    description : String,
+    vehicles : [{ type: Schema.Types.ObjectId, ref: 'Vehicle' }]
 },{ collection: 'bu' });
 
 buSchema.plugin(timestamps);
